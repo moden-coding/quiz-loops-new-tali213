@@ -57,31 +57,43 @@ import java.util.*;
  */
 
 //SAMPLE USAGE: A+
-/** The magic number is 2. Shh! Don't tell anyone
- *  Enter a guess:
- *  10
- *  Way off!
- *  Enter a guess:
- *  3
- *  Very close!
- *  Enter a guess:
- *  2
- *  It took you 3 guesses.
+/**
+ * The magic number is 2. Shh! Don't tell anyone
+ * Enter a guess:
+ * 10
+ * Way off!
+ * Enter a guess:
+ * 3
+ * Very close!
+ * Enter a guess:
+ * 2
+ * It took you 3 guesses.
  */
-
-
 
 public class App {
     public static void main(String[] args) throws Exception {
-        //DO NOT TOUCH THE THREE LINES BELOW
+        // DO NOT TOUCH THE THREE LINES BELOW
         int magicNumber = getMeARandomNumber();
-        System.out.println("The magic number is "+ magicNumber + ". Shh! Don't tell anyone");
+        System.out.println("The magic number is " + magicNumber + ". Shh! Don't tell anyone");
         Scanner reader = new Scanner(System.in);
+        int count = 0;
+
+        while (true) {
+            System.out.println("Enter a guess:");
+            int input = Integer.valueOf(reader.nextLine());
+            count++;
+            if(input > 10 || input < 1){
+                System.out.println("Enter a number between 0 and 10!"); 
+            }
+            if (input == magicNumber) {
+            System.out.println("It took you " + count + " guesses.");
+            break;
+            }
+        }
     }
 
-
-    //Do not modify!!!
-    public static int getMeARandomNumber(){
+    // Do not modify!!!
+    public static int getMeARandomNumber() {
         Random random = new Random();
         return random.nextInt(10) + 1;
     }
